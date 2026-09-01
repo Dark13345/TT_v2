@@ -198,8 +198,13 @@
 
   /* ── Главная ── */
   .greet { padding: 10px 18px 4px; }
-  .greet h1 { font-size: 26px; font-weight: 800; letter-spacing: -.02em; line-height: 1.18; margin-bottom: 6px; }
-  .greet p { font-size: 14.5px; color: var(--gray); }
+  .greet-label {
+    font-size: 11.5px; font-weight: 700; color: var(--accent);
+    text-transform: uppercase; letter-spacing: .12em; margin-bottom: 10px;
+  }
+  .greet h1 { font-size: 26px; font-weight: 800; letter-spacing: -.02em; line-height: 1.18; margin-bottom: 10px; }
+  .greet h1 span { color: var(--accent); }
+  .greet p { font-size: 15px; line-height: 1.5; color: var(--gray-light); }
 
   /* Карточка прогресса */
   .user-progress {
@@ -260,8 +265,9 @@
   .course-thumb {
     width: 64px; height: 64px; flex-shrink: 0; border-radius: 16px;
     background: var(--band); display: flex; align-items: center; justify-content: center;
-    font-size: 30px; line-height: 1;
+    font-size: 30px; line-height: 1; overflow: hidden;
   }
+  .course-thumb img { width: 54px; height: 54px; object-fit: contain; display: block; }
   .course-body { flex: 1; min-width: 0; padding-top: 2px; }
   .course-title {
     display: block;
@@ -285,8 +291,17 @@
   .toc-hero {
     height: 200px; background: var(--band);
     display: flex; align-items: center; justify-content: center;
+    overflow: hidden;
   }
+  /* С обложкой обложечная полоса тоже светлая — см. .lesson-illu */
+  .toc-hero.has-cover { background: #F1F2F4; }
   .toc-hero-emoji { font-size: 84px; line-height: 1; filter: drop-shadow(0 12px 22px rgba(0,0,0,.14)); }
+  /* Обложка главы: снизу её перекрывает лист с оглавлением,
+     поэтому картинку приподнимаем — главное должно остаться видимым */
+  .toc-hero img {
+    display: block; max-height: 172px; max-width: 74%;
+    object-fit: contain; margin-bottom: 14px;
+  }
   .toc-sheet {
     position: relative; margin-top: -22px; padding: 26px 18px 32px;
     background: var(--black); border-radius: 22px 22px 0 0;
@@ -356,6 +371,18 @@
   .lesson-chart-caption {
     font-size: 13.5px; color: var(--gray); text-align: center;
     padding: 12px 6px 0; border: none; line-height: 1.45;
+  }
+
+  /* Рисованная иллюстрация: та же полноширинная полоса, что и у схем.
+     Полоса светлая в обеих темах — как в референсе. Рисунки сделаны
+     в пастельной гамме и на тёмном фоне теряют и цвет, и мягкие тени. */
+  .lesson-illu {
+    margin: 26px -18px; padding: 16px 18px; background: #F1F2F4;
+    display: flex; align-items: center; justify-content: center;
+  }
+  .lesson-illu img {
+    display: block; max-width: 100%; max-height: 196px;
+    width: auto; height: auto; object-fit: contain;
   }
 
   /* Плашка-акцент — светло-зелёная, как в референсе */
@@ -796,8 +823,9 @@
   <div class="screen">
 
     <div class="greet">
-      <h1 id="greet-line">Академия Trading Time</h1>
-      <p>Курс о финансовых рынках: 6 глав, 24 урока и тест после каждой главы</p>
+      <div class="greet-label" id="greet-line">Добро пожаловать</div>
+      <h1>Изучите финансовые рынки<br><span>с нуля до первых решений</span></h1>
+      <p>Структурированный курс от базовой теории до практики. Начните прямо сейчас — все материалы открыты.</p>
     </div>
 
     <div class="user-progress" id="user-progress-home"></div>
@@ -827,7 +855,7 @@
 <!-- ОГЛАВЛЕНИЕ ГЛАВЫ                       -->
 <!-- ══════════════════════════════════════ -->
 <section class="section" id="section-chapter">
-  <div class="toc-hero"><div class="toc-hero-emoji" id="toc-emoji">🌍</div></div>
+  <div class="toc-hero" id="toc-hero"></div>
   <div class="toc-sheet">
     <div class="toc-title" id="toc-title"></div>
     <div class="toc-meta" id="toc-meta"></div>
@@ -853,7 +881,8 @@
         <p>Foreign Exchange (FX) — это международный валютный рынок, на котором покупаются и продаются валюты разных стран. Это самый большой финансовый рынок в мире: ежедневный оборот превышает <strong style="color:var(--white);">7 триллионов долларов</strong>.</p>
         <p>В отличие от фондового рынка, Foreign Exchange работает <strong style="color:var(--white);">24 часа в сутки, 5 дней в неделю</strong> — от открытия азиатской сессии в воскресенье вечером до закрытия американской в пятницу.</p>
 
-        <div class="info-card accent-border">
+        <div class="lesson-illu"><img src="images/ch1-l1.png" alt="" loading="lazy" onerror="this.parentNode.remove()"></div>
+<div class="info-card accent-border">
           <div class="info-card-title">💡 Простыми словами</div>
           <p style="font-size:14px; color:var(--gray-light); margin:0; line-height:1.65;">
             Foreign Exchange — это как обменный пункт, только в тысячи раз больше. Вы покупаете одну валюту, продаёте другую, и зарабатываете на разнице курсов.
@@ -867,7 +896,8 @@
         
         <p>До 1971 года все мировые валюты были привязаны к золоту — это называлось <strong style="color:var(--white);">Бреттон-Вудской системой</strong>. После её отмены валюты стали «плавающими»: их курс определяется спросом и предложением на рынке.</p>
 
-        <div class="compare-table">
+        <div class="lesson-illu"><img src="images/ch1-l2.png" alt="" loading="lazy" onerror="this.parentNode.remove()"></div>
+<div class="compare-table">
           <div class="compare-row header">
             <div class="compare-cell">До 1971</div>
             <div class="compare-cell">После 1971</div>
@@ -884,6 +914,8 @@
 
 <div class="lesson-page" id="lp-ch1-3" style="display:none;">
 <div class="content-block">
+<div class="lesson-illu"><img src="images/ch1-l3.png" alt="" loading="lazy" onerror="this.parentNode.remove()"></div>
+
 <div class="lesson-img"><svg viewBox="0 0 400 240" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><defs><linearGradient id="ch1s" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="var(--c-bg)" stop-opacity=".3"/><stop offset=".5" stop-color="var(--c-bg)" stop-opacity=".55"/><stop offset="1" stop-color="var(--c-bg)" stop-opacity=".72"/></linearGradient><clipPath id="ch1sClip"><rect width="400" height="240" rx="12"/></clipPath></defs><g clip-path="url(#ch1sClip)"><rect width="400" height="240" fill="var(--c-bg)"/><image class="bg-light" href="images/ch1-sessions-light.jpg" xlink:href="images/ch1-sessions-light.jpg" x="0" y="0" width="400" height="240" preserveAspectRatio="xMidYMid slice"/><image class="bg-dark" href="images/ch1-sessions-dark.jpg" xlink:href="images/ch1-sessions-dark.jpg" x="0" y="0" width="400" height="240" preserveAspectRatio="xMidYMid slice"/><rect width="400" height="240" fill="url(#ch1s)"/></g><rect width="400" height="240" rx="12" fill="none" stroke="var(--c-grid)"/><text x="200" y="27" text-anchor="middle" fill="var(--c-text)" font-size="13" font-weight="700" font-family="system-ui,Segoe UI,Roboto,sans-serif">Четыре сессии сменяют друг друга</text><g stroke="var(--c-grid)" stroke-width="1" stroke-dasharray="3,4" opacity=".8"><line x1="78.0" y1="46" x2="78.0" y2="180"/><line x1="155.5" y1="46" x2="155.5" y2="180"/><line x1="233.0" y1="46" x2="233.0" y2="180"/><line x1="310.5" y1="46" x2="310.5" y2="180"/><line x1="388.0" y1="46" x2="388.0" y2="180"/></g><text x="10" y="68" fill="var(--c-blue)" font-size="12" font-weight="700" font-family="system-ui,Segoe UI,Roboto,sans-serif">Сидней</text><rect x="78.0" y="54" width="116.2" height="20" rx="5" fill="var(--c-blue)" fill-opacity=".3" stroke="var(--c-blue)" stroke-width="1.4"/><text x="136.1" y="68" text-anchor="middle" fill="var(--c-text)" font-size="11" font-family="system-ui,Segoe UI,Roboto,sans-serif">22:00–07:00</text><text x="10" y="98" fill="var(--c-teal)" font-size="12" font-weight="700" font-family="system-ui,Segoe UI,Roboto,sans-serif">Токио</text><rect x="103.8" y="84" width="116.3" height="20" rx="5" fill="var(--c-teal)" fill-opacity=".3" stroke="var(--c-teal)" stroke-width="1.4"/><text x="161.9" y="98" text-anchor="middle" fill="var(--c-text)" font-size="11" font-family="system-ui,Segoe UI,Roboto,sans-serif">00:00–09:00</text><text x="10" y="128" fill="var(--c-gold)" font-size="12" font-weight="700" font-family="system-ui,Segoe UI,Roboto,sans-serif">Лондон</text><rect x="207.2" y="114" width="116.2" height="20" rx="5" fill="var(--c-gold)" fill-opacity=".3" stroke="var(--c-gold)" stroke-width="1.4"/><text x="265.3" y="128" text-anchor="middle" fill="var(--c-text)" font-size="11" font-family="system-ui,Segoe UI,Roboto,sans-serif">08:00–17:00</text><text x="10" y="158" fill="var(--c-green)" font-size="12" font-weight="700" font-family="system-ui,Segoe UI,Roboto,sans-serif">Нью-Йорк</text><rect x="271.8" y="144" width="116.2" height="20" rx="5" fill="var(--c-green)" fill-opacity=".3" stroke="var(--c-green)" stroke-width="1.4"/><text x="329.9" y="158" text-anchor="middle" fill="var(--c-text)" font-size="11" font-family="system-ui,Segoe UI,Roboto,sans-serif">13:00–22:00</text><line x1="78.0" y1="182" x2="388.0" y2="182" stroke="var(--c-text-faint)" stroke-width="1.2"/><line x1="78.0" y1="182" x2="78.0" y2="187" stroke="var(--c-text-faint)" stroke-width="1.2"/><text x="78.0" y="200" text-anchor="start" fill="var(--c-text-dim)" font-size="11" font-family="system-ui,Segoe UI,Roboto,sans-serif">22:00</text><line x1="155.5" y1="182" x2="155.5" y2="187" stroke="var(--c-text-faint)" stroke-width="1.2"/><text x="155.5" y="200" text-anchor="middle" fill="var(--c-text-dim)" font-size="11" font-family="system-ui,Segoe UI,Roboto,sans-serif">04:00</text><line x1="233.0" y1="182" x2="233.0" y2="187" stroke="var(--c-text-faint)" stroke-width="1.2"/><text x="233.0" y="200" text-anchor="middle" fill="var(--c-text-dim)" font-size="11" font-family="system-ui,Segoe UI,Roboto,sans-serif">10:00</text><line x1="310.5" y1="182" x2="310.5" y2="187" stroke="var(--c-text-faint)" stroke-width="1.2"/><text x="310.5" y="200" text-anchor="middle" fill="var(--c-text-dim)" font-size="11" font-family="system-ui,Segoe UI,Roboto,sans-serif">16:00</text><line x1="388.0" y1="182" x2="388.0" y2="187" stroke="var(--c-text-faint)" stroke-width="1.2"/><text x="388.0" y="200" text-anchor="end" fill="var(--c-text-dim)" font-size="11" font-family="system-ui,Segoe UI,Roboto,sans-serif">22:00</text><text x="200" y="224" text-anchor="middle" fill="var(--c-teal)" font-size="11.5" font-weight="600" font-family="system-ui,Segoe UI,Roboto,sans-serif">Пн 00:00 — Пт 24:00: рынок открыт непрерывно</text></svg></div>
         
 <div class="lesson-chart"><svg viewBox="0 0 400 200" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><defs><linearGradient id="ch1p" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="var(--c-bg)" stop-opacity=".3"/><stop offset=".5" stop-color="var(--c-bg)" stop-opacity=".55"/><stop offset="1" stop-color="var(--c-bg)" stop-opacity=".72"/></linearGradient><clipPath id="ch1pClip"><rect width="400" height="200" rx="12"/></clipPath></defs><g clip-path="url(#ch1pClip)"><rect width="400" height="200" fill="var(--c-bg)"/><image class="bg-light" href="images/ch1-participants-light.jpg" xlink:href="images/ch1-participants-light.jpg" x="0" y="0" width="400" height="200" preserveAspectRatio="xMidYMid slice"/><image class="bg-dark" href="images/ch1-participants-dark.jpg" xlink:href="images/ch1-participants-dark.jpg" x="0" y="0" width="400" height="200" preserveAspectRatio="xMidYMid slice"/><rect width="400" height="200" fill="url(#ch1p)"/></g><rect width="400" height="200" rx="12" fill="none" stroke="var(--c-grid)"/><text x="200" y="26" text-anchor="middle" fill="var(--c-text)" font-size="12.5" font-weight="700" font-family="system-ui,Segoe UI,Roboto,sans-serif">Доля участников в дневном обороте — $7 трлн</text><text x="10" y="57" fill="var(--c-text-dim)" font-size="11.5" font-family="system-ui,Segoe UI,Roboto,sans-serif">Банки</text><rect x="130.0" y="44" width="200.0" height="18" rx="4" fill="var(--c-grid)" fill-opacity=".7"/><rect x="130.0" y="44" width="100.0" height="18" rx="4" fill="var(--c-teal)"/><text x="340" y="57" fill="var(--c-teal)" font-size="12.5" font-weight="700" font-family="system-ui,Segoe UI,Roboto,sans-serif">50%</text><text x="10" y="87" fill="var(--c-text-dim)" font-size="11.5" font-family="system-ui,Segoe UI,Roboto,sans-serif">Корпорации</text><rect x="130.0" y="74" width="200.0" height="18" rx="4" fill="var(--c-grid)" fill-opacity=".7"/><rect x="130.0" y="74" width="40.0" height="18" rx="4" fill="var(--c-blue)"/><text x="340" y="87" fill="var(--c-blue)" font-size="12.5" font-weight="700" font-family="system-ui,Segoe UI,Roboto,sans-serif">20%</text><text x="10" y="117" fill="var(--c-text-dim)" font-size="11.5" font-family="system-ui,Segoe UI,Roboto,sans-serif">Хедж-фонды</text><rect x="130.0" y="104" width="200.0" height="18" rx="4" fill="var(--c-grid)" fill-opacity=".7"/><rect x="130.0" y="104" width="30.0" height="18" rx="4" fill="var(--c-gold)"/><text x="340" y="117" fill="var(--c-gold)" font-size="12.5" font-weight="700" font-family="system-ui,Segoe UI,Roboto,sans-serif">15%</text><text x="10" y="147" fill="var(--c-text-dim)" font-size="11.5" font-family="system-ui,Segoe UI,Roboto,sans-serif">Правительства</text><rect x="130.0" y="134" width="200.0" height="18" rx="4" fill="var(--c-grid)" fill-opacity=".7"/><rect x="130.0" y="134" width="20.0" height="18" rx="4" fill="var(--c-green)"/><text x="340" y="147" fill="var(--c-green)" font-size="12.5" font-weight="700" font-family="system-ui,Segoe UI,Roboto,sans-serif">10%</text><text x="10" y="177" fill="var(--c-text-dim)" font-size="11.5" font-family="system-ui,Segoe UI,Roboto,sans-serif">Частные участники</text><rect x="130.0" y="164" width="200.0" height="18" rx="4" fill="var(--c-grid)" fill-opacity=".7"/><rect x="130.0" y="164" width="10.0" height="18" rx="4" fill="var(--c-text-faint)"/><text x="340" y="177" fill="var(--c-text-faint)" font-size="12.5" font-weight="700" font-family="system-ui,Segoe UI,Roboto,sans-serif">5%</text></svg><div class="lesson-chart-caption">Foreign Exchange — децентрализованный глобальный рынок без центральной биржи</div></div>
@@ -929,7 +961,8 @@
           </p>
         </div>
 
-        <div class="info-card gold-border">
+        <div class="lesson-illu"><img src="images/ch1-l4.png" alt="" loading="lazy" onerror="this.parentNode.remove()"></div>
+<div class="info-card gold-border">
           <div class="info-card-title gold">⚠️ Важно понимать</div>
           <p style="font-size:14px; color:var(--gray-light); line-height:1.65; margin:0;">
             Foreign Exchange — это риск. Большинство начинающих участников рынка сталкиваются с трудностями из-за нехватки знаний и дисциплины. Именно поэтому вы здесь — чтобы понять теорию перед практическим применением знаний.
@@ -1781,7 +1814,7 @@
   var CHAPTERS = [
     { id: 'ch1', num: '01', icon: '🌍', title: 'Введение в Foreign Exchange',
       desc: 'Что такое Foreign Exchange, история рынка, участники рынка, принципы работы',
-      minutes: 25, algo: false },
+      minutes: 25, algo: false, cover: 'images/ch1-cover.png' },
     { id: 'ch2', num: '02', icon: '📊', title: 'Основы Foreign Exchange',
       desc: 'Валютные пары, типы графиков, индикаторы, инструменты анализа',
       minutes: 25, algo: false },
@@ -2179,13 +2212,32 @@
       '</div>';
   }
 
+  /* ── Обложки глав ────────────────────────────────────────
+     Пока нарисованы не все, поэтому глава без картинки просто
+     показывает свой значок. Если файл потеряется — то же самое. */
+  function coverHtml(c) {
+    if (!c.cover) return c.icon;
+    return '<img src="' + c.cover + '" alt="" onerror="coverFail(this,\'' + c.icon + '\')">';
+  }
+
+  function coverFail(img, icon) {
+    var host = img.parentNode;
+    if (!host) return;
+    if (host.classList.contains('toc-hero')) {
+      host.classList.remove('has-cover');
+      host.innerHTML = '<div class="toc-hero-emoji">' + icon + '</div>';
+    } else {
+      host.innerHTML = icon;
+    }
+  }
+
   /* Строка главы в списке — плоская, с бейджем прогресса */
   function courseRowHtml(c) {
     var dn = chapterDone(c.id), tot = chapterTotal(c.id);
     var full = dn >= tot;
     var mark = isMarked(c.id) ? '<span class="card-mark" title="В закладках">★</span>' : '';
     return '<button class="course-row" onclick="openChapter(\'' + c.id + '\')">' +
-      '<span class="course-thumb">' + c.icon + '</span>' +
+      '<span class="course-thumb">' + coverHtml(c) + '</span>' +
       '<span class="course-body">' +
         '<span class="course-title">' + c.title + mark + '</span>' +
         '<span class="course-desc">' + c.desc + '</span>' +
@@ -2264,12 +2316,17 @@
   /* Оглавление главы: обложка, вступление, список уроков и тест */
   function renderChapter(id) {
     var c = chapterById(id), list = lessonsOf(id);
-    var em = document.getElementById('toc-emoji');
+    var hero = document.getElementById('toc-hero');
     var ti = document.getElementById('toc-title');
     var mt = document.getElementById('toc-meta');
     var intro = document.getElementById('toc-intro');
     var box = document.getElementById('toc-list');
-    if (em) em.textContent = c.icon;
+    if (hero) {
+      hero.className = c.cover ? 'toc-hero has-cover' : 'toc-hero';
+      hero.innerHTML = c.cover
+        ? coverHtml(c)
+        : '<div class="toc-hero-emoji">' + c.icon + '</div>';
+    }
     if (ti) ti.textContent = c.title;
     if (mt) {
       mt.textContent = 'Глава ' + c.num + ' · ' + list.length + ' ' + lessonWord(list.length) +
