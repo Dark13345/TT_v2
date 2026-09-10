@@ -1820,7 +1820,7 @@
   var CHAPTERS = [
     { id: 'ch1', num: '01', icon: '🌍', title: 'Введение в Foreign Exchange',
       desc: 'Что такое Foreign Exchange, история рынка, участники рынка, принципы работы',
-      minutes: 25, algo: false, cover: 'images/ch1-cover.png' },
+      minutes: 25, algo: false },
     { id: 'ch2', num: '02', icon: '📊', title: 'Основы Foreign Exchange',
       desc: 'Валютные пары, типы графиков, индикаторы, инструменты анализа',
       minutes: 25, algo: false },
@@ -1846,6 +1846,18 @@
     ch5: ['Эмоции и финансовые решения', 'Управление рисками: базовые принципы финансовой грамотности', 'Теория и практика: как работают специалисты'],
     ch6: ['Человек vs Алгоритм', 'Как работает алгоритм: 4 шага', 'Виды алготрейдинговых стратегий', 'Ключевые метрики', 'Тестирование алгоритма', 'Дисциплина — главное правило']
   };
+
+  var COVERS = {
+    ch1: 'images/ch1-cover.png',
+    ch2: 'images/ch2-cover.png',
+    ch3: 'images/ch3-cover.png',
+    ch4: 'images/ch4-cover.png',
+    ch5: 'images/ch5-cover.png',
+    ch6: 'images/ch6-cover.png'
+  };
+  for (var _i = 0; _i < CHAPTERS.length; _i++) {
+    if (COVERS[CHAPTERS[_i].id]) CHAPTERS[_i].cover = COVERS[CHAPTERS[_i].id];
+  }
 
   /* ══ ПРОГРЕСС ═══════════════════════════════════════════════════
      Всё хранится в localStorage этого устройства.
