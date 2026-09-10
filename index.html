@@ -379,6 +379,20 @@
     padding: 12px 6px 0; border: none; line-height: 1.45;
   }
 
+  /* Урок, который начинается сразу со схемы: отступ листа и собственный
+     отступ полосы складывались в двойной пробел под заголовком.
+     Оставляем немного, чтобы скруглённый край листа читался. */
+  .lesson-page > .content-block:first-child > .lesson-chart:first-child,
+  .lesson-page > .content-block:first-child > .lesson-img:first-child,
+  .lesson-page > .content-block:first-child > .lesson-illu:first-child,
+  .lesson-page > .content-block:first-child > .lesson-photo:first-child,
+  .lesson-page > .content-block:first-child > .trend-block:first-child > .trend-svg-wrap,
+  .lesson-page > .lesson-chart:first-child,
+  .lesson-page > .lesson-img:first-child,
+  .lesson-page > .lesson-illu:first-child {
+    margin-top: 2px;
+  }
+
   /* Рисованная иллюстрация: та же полноширинная полоса, что и у схем.
      Полоса светлая в обеих темах — как в референсе. Рисунки сделаны
      в пастельной гамме и на тёмном фоне теряют и цвет, и мягкие тени. */
