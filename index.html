@@ -500,7 +500,8 @@
     margin-top: 18px; padding: 16px 18px; border-radius: 16px;
     font-size: 15px; font-weight: 500; display: none; line-height: 1.55;
   }
-  .quiz-feedback.show { display: block; }
+  .quiz-feedback.show { display: flex; align-items: flex-start; gap: 14px; }
+  .qfb-icon { width: 46px; height: 46px; flex-shrink: 0; display: block; margin-top: -2px; }
   .quiz-feedback.correct { background: var(--green-dim); color: var(--green); }
   .quiz-feedback.wrong { background: var(--card2); color: var(--gray-light); }
   .quiz-nav-row { display: flex; flex-direction: column-reverse; gap: 10px; margin-top: auto; padding-top: 28px; }
@@ -1610,8 +1611,8 @@
           <span>Только во время американской сессии, 8 часов</span>
         </button>
       </div>
-      <div class="quiz-feedback correct" id="qfb-ch1-ok">✅ Foreign Exchange работает 24 часа в сутки, 5 дней в неделю — с воскресенья вечером до пятницы. Четыре торговые сессии сменяют друг друга без перерыва.</div>
-      <div class="quiz-feedback wrong"   id="qfb-ch1-no">❌ Правильный ответ В. Foreign Exchange работает 24 часа, но только 5 дней в неделю — с понедельника по пятницу. В выходные рынок закрыт.</div>
+      <div class="quiz-feedback correct" id="qfb-ch1-ok"><img class="qfb-icon" src="images/quiz-ok.png" alt="" onerror="this.remove()"><span>Foreign Exchange работает 24 часа в сутки, 5 дней в неделю — с воскресенья вечером до пятницы. Четыре торговые сессии сменяют друг друга без перерыва.</span></div>
+      <div class="quiz-feedback wrong" id="qfb-ch1-no"><img class="qfb-icon" src="images/quiz-no.png" alt="" onerror="this.remove()"><span>Правильный ответ В. Foreign Exchange работает 24 часа, но только 5 дней в неделю — с понедельника по пятницу. В выходные рынок закрыт.</span></div>
       <div class="quiz-nav-row">
         <button class="quiz-nav-back" onclick="backFromQuiz('ch1')">← К уроку</button>
         <button class="quiz-nav-next" id="qnext-ch1" onclick="showLesson('ch2')" style="display:none;">Следующая глава →</button>
@@ -1644,8 +1645,8 @@
           <span>Евро дешевле доллара</span>
         </button>
       </div>
-      <div class="quiz-feedback correct" id="qfb-ch2-ok">✅ В паре EUR/USD котировка показывает цену базовой валюты (EUR) в единицах котируемой (USD). EUR/USD = 1.0850 → 1 евро стоит 1.0850 доллара.</div>
-      <div class="quiz-feedback wrong"   id="qfb-ch2-no">❌ EUR — базовая валюта. EUR/USD = 1.0850 означает: 1 евро = 1.0850 доллара, то есть евро дороже доллара.</div>
+      <div class="quiz-feedback correct" id="qfb-ch2-ok"><img class="qfb-icon" src="images/quiz-ok.png" alt="" onerror="this.remove()"><span>В паре EUR/USD котировка показывает цену базовой валюты (EUR) в единицах котируемой (USD). EUR/USD = 1.0850 → 1 евро стоит 1.0850 доллара.</span></div>
+      <div class="quiz-feedback wrong" id="qfb-ch2-no"><img class="qfb-icon" src="images/quiz-no.png" alt="" onerror="this.remove()"><span>EUR — базовая валюта. EUR/USD = 1.0850 означает: 1 евро = 1.0850 доллара, то есть евро дороже доллара.</span></div>
       <div class="quiz-nav-row">
         <button class="quiz-nav-back" onclick="backFromQuiz('ch2')">← К уроку</button>
         <button class="quiz-nav-next" id="qnext-ch2" onclick="showLesson('ch3')" style="display:none;">Следующая глава →</button>
@@ -1678,8 +1679,8 @@
           <span>Курс валюты прошлой недели</span>
         </button>
       </div>
-      <div class="quiz-feedback correct" id="qfb-ch3-ok">✅ Решения центральных банков по процентным ставкам — самый мощный фундаментальный фактор. В экономическом календаре они отмечаются красным кружком «Очень высокое влияние».</div>
-      <div class="quiz-feedback wrong"   id="qfb-ch3-no">❌ Самые важные события — решения центральных банков, данные по инфляции и занятости. Именно они вызывают самые сильные движения на рынке.</div>
+      <div class="quiz-feedback correct" id="qfb-ch3-ok"><img class="qfb-icon" src="images/quiz-ok.png" alt="" onerror="this.remove()"><span>Решения центральных банков по процентным ставкам — самый мощный фундаментальный фактор. В экономическом календаре они отмечаются красным кружком «Очень высокое влияние».</span></div>
+      <div class="quiz-feedback wrong" id="qfb-ch3-no"><img class="qfb-icon" src="images/quiz-no.png" alt="" onerror="this.remove()"><span>Самые важные события — решения центральных банков, данные по инфляции и занятости. Именно они вызывают самые сильные движения на рынке.</span></div>
       <div class="quiz-nav-row">
         <button class="quiz-nav-back" onclick="backFromQuiz('ch3')">← К уроку</button>
         <button class="quiz-nav-next" id="qnext-ch3" onclick="showLesson('ch4')" style="display:none;">Следующая глава →</button>
@@ -1712,8 +1713,8 @@
           <span>Разворотный паттерн</span>
         </button>
       </div>
-      <div class="quiz-feedback correct" id="qfb-ch4-ok">✅ Восходящий тренд (аптренд) — когда цена образует последовательность всё более высоких максимумов и минимумов. Именно так выглядит бычий рынок на графике.</div>
-      <div class="quiz-feedback wrong"   id="qfb-ch4-no">❌ Когда каждый новый пик выше предыдущего — это восходящий тренд (аптренд). Классическое определение: более высокие максимумы и более высокие минимумы.</div>
+      <div class="quiz-feedback correct" id="qfb-ch4-ok"><img class="qfb-icon" src="images/quiz-ok.png" alt="" onerror="this.remove()"><span>Восходящий тренд (аптренд) — когда цена образует последовательность всё более высоких максимумов и минимумов. Именно так выглядит бычий рынок на графике.</span></div>
+      <div class="quiz-feedback wrong" id="qfb-ch4-no"><img class="qfb-icon" src="images/quiz-no.png" alt="" onerror="this.remove()"><span>Когда каждый новый пик выше предыдущего — это восходящий тренд (аптренд). Классическое определение: более высокие максимумы и более высокие минимумы.</span></div>
       <div class="quiz-nav-row">
         <button class="quiz-nav-back" onclick="backFromQuiz('ch4')">← К уроку</button>
         <button class="quiz-nav-next" id="qnext-ch4" onclick="showLesson('ch5')" style="display:none;">Следующая глава →</button>
@@ -1725,7 +1726,7 @@
   <div class="quiz-step" id="quiz-step-ch5" style="display:none;">
     <div class="quiz-page">
       <div class="quiz-step-header">🧩 Проверьте себя</div>
-      <div class="quiz-visual"><svg viewBox="0 0 400 186" xmlns="http://www.w3.org/2000/svg"><rect width="400" height="186" rx="12" fill="var(--c-bg)" stroke="var(--c-grid)"/><text x="200" y="24" text-anchor="middle" fill="var(--c-text)" font-size="12.5" font-weight="700" font-family="system-ui,Segoe UI,Roboto,sans-serif">Три эмоции участника рынка</text><rect x="12" y="38" width="120" height="112" rx="11" fill="var(--c-panel)" stroke="var(--c-blue)" stroke-opacity=".45"/><text x="72" y="74" text-anchor="middle" font-size="26" font-family="system-ui,Segoe UI,Roboto,sans-serif">😨</text><text x="72" y="98" text-anchor="middle" fill="var(--c-blue)" font-size="12" font-weight="700" font-family="system-ui,Segoe UI,Roboto,sans-serif">Страх</text><text x="72" y="118" text-anchor="middle" fill="var(--c-text-dim)" font-size="10.5" font-family="system-ui,Segoe UI,Roboto,sans-serif">Продать</text><text x="72" y="132" text-anchor="middle" fill="var(--c-text-dim)" font-size="10.5" font-family="system-ui,Segoe UI,Roboto,sans-serif">слишком рано</text><rect x="140" y="38" width="120" height="112" rx="11" fill="var(--c-panel)" stroke="var(--c-gold)" stroke-opacity=".45"/><text x="200" y="74" text-anchor="middle" font-size="26" font-family="system-ui,Segoe UI,Roboto,sans-serif">🤑</text><text x="200" y="98" text-anchor="middle" fill="var(--c-gold)" font-size="12" font-weight="700" font-family="system-ui,Segoe UI,Roboto,sans-serif">Жадность</text><text x="200" y="118" text-anchor="middle" fill="var(--c-text-dim)" font-size="10.5" font-family="system-ui,Segoe UI,Roboto,sans-serif">Нарушить</text><text x="200" y="132" text-anchor="middle" fill="var(--c-text-dim)" font-size="10.5" font-family="system-ui,Segoe UI,Roboto,sans-serif">свой план</text><rect x="268" y="38" width="120" height="112" rx="11" fill="var(--c-panel)" stroke="var(--c-red)" stroke-opacity=".45"/><text x="328" y="74" text-anchor="middle" font-size="26" font-family="system-ui,Segoe UI,Roboto,sans-serif">🙏</text><text x="328" y="98" text-anchor="middle" fill="var(--c-red)" font-size="12" font-weight="700" font-family="system-ui,Segoe UI,Roboto,sans-serif">Надежда</text><text x="328" y="118" text-anchor="middle" fill="var(--c-text-dim)" font-size="10.5" font-family="system-ui,Segoe UI,Roboto,sans-serif">Ждать, что</text><text x="328" y="132" text-anchor="middle" fill="var(--c-text-dim)" font-size="10.5" font-family="system-ui,Segoe UI,Roboto,sans-serif">вырастет само</text><text x="200" y="174" text-anchor="middle" fill="var(--c-text-dim)" font-size="10.5" font-family="system-ui,Segoe UI,Roboto,sans-serif">Какая из них заставляет бездействовать?</text></svg></div>
+      <div class="quiz-visual"><svg viewBox="0 0 400 186" xmlns="http://www.w3.org/2000/svg"><rect width="400" height="186" rx="12" fill="var(--c-bg)" stroke="var(--c-grid)"/><text x="200" y="24" text-anchor="middle" fill="var(--c-text)" font-size="12.5" font-weight="700" font-family="system-ui,Segoe UI,Roboto,sans-serif">Три эмоции участника рынка</text><rect x="12" y="38" width="120" height="112" rx="11" fill="var(--c-panel)" stroke="var(--c-blue)" stroke-opacity=".45"/><image href="images/emo-fear.png" xlink:href="images/emo-fear.png" x="55.0" y="50.9" width="34.0" height="34.0"/><text x="72" y="98" text-anchor="middle" fill="var(--c-blue)" font-size="12" font-weight="700" font-family="system-ui,Segoe UI,Roboto,sans-serif">Страх</text><text x="72" y="118" text-anchor="middle" fill="var(--c-text-dim)" font-size="10.5" font-family="system-ui,Segoe UI,Roboto,sans-serif">Продать</text><text x="72" y="132" text-anchor="middle" fill="var(--c-text-dim)" font-size="10.5" font-family="system-ui,Segoe UI,Roboto,sans-serif">слишком рано</text><rect x="140" y="38" width="120" height="112" rx="11" fill="var(--c-panel)" stroke="var(--c-gold)" stroke-opacity=".45"/><image href="images/emo-greed.png" xlink:href="images/emo-greed.png" x="183.0" y="50.9" width="34.0" height="34.0"/><text x="200" y="98" text-anchor="middle" fill="var(--c-gold)" font-size="12" font-weight="700" font-family="system-ui,Segoe UI,Roboto,sans-serif">Жадность</text><text x="200" y="118" text-anchor="middle" fill="var(--c-text-dim)" font-size="10.5" font-family="system-ui,Segoe UI,Roboto,sans-serif">Нарушить</text><text x="200" y="132" text-anchor="middle" fill="var(--c-text-dim)" font-size="10.5" font-family="system-ui,Segoe UI,Roboto,sans-serif">свой план</text><rect x="268" y="38" width="120" height="112" rx="11" fill="var(--c-panel)" stroke="var(--c-red)" stroke-opacity=".45"/><image href="images/emo-hope.png" xlink:href="images/emo-hope.png" x="311.0" y="50.9" width="34.0" height="34.0"/><text x="328" y="98" text-anchor="middle" fill="var(--c-red)" font-size="12" font-weight="700" font-family="system-ui,Segoe UI,Roboto,sans-serif">Надежда</text><text x="328" y="118" text-anchor="middle" fill="var(--c-text-dim)" font-size="10.5" font-family="system-ui,Segoe UI,Roboto,sans-serif">Ждать, что</text><text x="328" y="132" text-anchor="middle" fill="var(--c-text-dim)" font-size="10.5" font-family="system-ui,Segoe UI,Roboto,sans-serif">вырастет само</text><text x="200" y="174" text-anchor="middle" fill="var(--c-text-dim)" font-size="10.5" font-family="system-ui,Segoe UI,Roboto,sans-serif">Какая из них заставляет бездействовать?</text></svg></div>
       <div class="quiz-question-text">Инвестор видит убыток и не фиксирует его, думая «подождать — само вырастет». Какая эмоция им управляет?</div>
       <div class="quiz-opts" id="qopts-ch5">
         <button class="quiz-opt-btn" onclick="quizAnswer(this, false, 'ch5', 0)" data-correct="false"><span class="quiz-opt-letter">А</span><span>Самодисциплина — он следует своему плану</span></button>
@@ -1733,8 +1734,8 @@
         <button class="quiz-opt-btn" onclick="quizAnswer(this, true, 'ch5', 2)" data-correct="true"><span class="quiz-opt-letter">В</span><span>Надежда — он ждёт разворота без анализа</span></button>
         <button class="quiz-opt-btn" onclick="quizAnswer(this, false, 'ch5', 3)" data-correct="false"><span class="quiz-opt-letter">Г</span><span>Страх — он боится принимать новые решения</span></button>
       </div>
-      <div class="quiz-feedback correct" id="qfb-ch5-ok">✅ Верно! Это надежда — одна из трёх деструктивных эмоций. «Само вырастет» — не анализ, а ожидание. Исследователи называют это эффектом избегания потерь.</div>
-      <div class="quiz-feedback wrong"   id="qfb-ch5-no">❌ Посмотрите на три эмоции: Страх, Жадность, Надежда. «Подождать — само вырастет» — это надежда без анализа.</div>
+      <div class="quiz-feedback correct" id="qfb-ch5-ok"><img class="qfb-icon" src="images/quiz-ok.png" alt="" onerror="this.remove()"><span>Верно! Это надежда — одна из трёх деструктивных эмоций. «Само вырастет» — не анализ, а ожидание. Исследователи называют это эффектом избегания потерь.</span></div>
+      <div class="quiz-feedback wrong" id="qfb-ch5-no"><img class="qfb-icon" src="images/quiz-no.png" alt="" onerror="this.remove()"><span>Посмотрите на три эмоции: Страх, Жадность, Надежда. «Подождать — само вырастет» — это надежда без анализа.</span></div>
       <div class="quiz-nav-row">
         <button class="quiz-nav-back" onclick="backFromQuiz('ch5')">← К уроку</button>
         <button class="quiz-nav-next" id="qnext-ch5" onclick="showLesson('ch6')" style="display:none;">Последняя глава →</button>
@@ -1754,8 +1755,8 @@
         <button class="quiz-opt-btn" onclick="quizAnswer(this, false, 'ch6', 2)" data-correct="false"><span class="quiz-opt-letter">В</span><span>Win rate 40% всегда означает убыток — нужно минимум 60%</span></button>
         <button class="quiz-opt-btn" onclick="quizAnswer(this, false, 'ch6', 3)" data-correct="false"><span class="quiz-opt-letter">Г</span><span>Нельзя ничего сказать без знания объёма лота</span></button>
       </div>
-      <div class="quiz-feedback correct" id="qfb-ch6-ok">✅ Верно! При risk/reward 1:3 достаточно побеждать в 34% случаев. 40 × $3 = $120 против 60 × $1 = $60. Итог: +$60.</div>
-      <div class="quiz-feedback wrong"   id="qfb-ch6-no">❌ Win rate — не единственная метрика. При risk/reward 1:3 даже 34% побед дают итоговый плюс.</div>
+      <div class="quiz-feedback correct" id="qfb-ch6-ok"><img class="qfb-icon" src="images/quiz-ok.png" alt="" onerror="this.remove()"><span>Верно! При risk/reward 1:3 достаточно побеждать в 34% случаев. 40 × $3 = $120 против 60 × $1 = $60. Итог: +$60.</span></div>
+      <div class="quiz-feedback wrong" id="qfb-ch6-no"><img class="qfb-icon" src="images/quiz-no.png" alt="" onerror="this.remove()"><span>Win rate — не единственная метрика. При risk/reward 1:3 даже 34% побед дают итоговый плюс.</span></div>
       <div class="quiz-nav-row">
         <button class="quiz-nav-back" onclick="backFromQuiz('ch6')">← К уроку</button>
         <button class="quiz-nav-next" id="qnext-ch6" onclick="showComplete()" style="display:none;">Завершить курс 🎓</button>
