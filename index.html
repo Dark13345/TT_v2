@@ -355,7 +355,7 @@
   .lesson-hero h1 { font-size: 26px; font-weight: 800; line-height: 1.2; letter-spacing: -.02em; color: var(--white); }
 
   .lesson-read {
-    position: relative; margin-top: -18px; padding: 24px 18px 32px;
+    position: relative; margin-top: -18px; padding: 15px 18px 32px;
     background: var(--black); border-radius: 20px 20px 0 0;
     font-size: 17px; line-height: 1.62; color: var(--white);
   }
@@ -368,7 +368,7 @@
 
   /* Полноширинные иллюстрации на серой полосе — приём референса */
   .lesson-img, .lesson-chart, .trend-svg-wrap, .lesson-photo {
-    margin: 24px -18px; padding: 18px 14px; background: var(--band);
+    margin: 16px -18px; padding: 14px 14px; background: var(--band);
     border: none; border-radius: 0; overflow: hidden;
   }
   .lesson-img svg, .lesson-chart svg, .trend-svg-wrap svg, .lesson-photo img {
@@ -382,14 +382,9 @@
   /* Урок, который начинается сразу со схемы: отступ листа и собственный
      отступ полосы складывались в двойной пробел под заголовком.
      Оставляем немного, чтобы скруглённый край листа читался. */
-  .lesson-page > .content-block:first-child > .lesson-chart:first-child,
-  .lesson-page > .content-block:first-child > .lesson-img:first-child,
-  .lesson-page > .content-block:first-child > .lesson-illu:first-child,
-  .lesson-page > .content-block:first-child > .lesson-photo:first-child,
+  .lesson-page > .content-block:first-child > *:first-child,
   .lesson-page > .content-block:first-child > .trend-block:first-child > .trend-svg-wrap,
-  .lesson-page > .lesson-chart:first-child,
-  .lesson-page > .lesson-img:first-child,
-  .lesson-page > .lesson-illu:first-child {
+  .lesson-page > *:first-child {
     margin-top: 2px;
   }
 
@@ -397,7 +392,7 @@
      Полоса светлая в обеих темах — как в референсе. Рисунки сделаны
      в пастельной гамме и на тёмном фоне теряют и цвет, и мягкие тени. */
   .lesson-illu {
-    margin: 26px -18px; padding: 16px 18px; background: #F1F2F4;
+    margin: 16px -18px; padding: 12px 18px; background: #F1F2F4;
     display: flex; align-items: center; justify-content: center;
   }
   .lesson-illu img {
